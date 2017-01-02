@@ -133,7 +133,7 @@ streamUpload cmu = do
         Nothing -> lift $ do
             rs <- partUploader partnum bufsize (hashFinalize ctx) bss
 
-            logStr $ printf "\n**** Uploaded (final) part %d size $d\n" partnum bufsize
+            {- logStr $ printf "\n**** Uploaded (final) part %d size $d\n" partnum bufsize -}
 
             let allParts = D.toList $ D.snoc completed $ completedPart partnum <$> (rs ^. uprsETag)
                 prts = nonEmpty =<< sequence allParts
