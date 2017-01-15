@@ -16,6 +16,11 @@ extra-source-files:  README.md, Changelog.md
 cabal-version:       >=1.10
 tested-with:         GHC == 7.8.4, GHC == 7.10.2, GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.*
 
+flag library-only
+  description: Don't compile examples
+  manual: True
+  default: True
+
 library
   hs-source-dirs:      src
   exposed-modules:     Network.AWS.S3.StreamingUpload
@@ -39,7 +44,7 @@ library
 
   if impl(ghc < 7.11)
     build-depends:
-      semigroups >= 0.12
+        semigroups >= 0.12
       , transformers >=0.4
   if impl(ghc == 7.8.*)
     build-depends:
